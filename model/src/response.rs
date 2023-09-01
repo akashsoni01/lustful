@@ -88,6 +88,17 @@ impl RegisterResponse {
 }
 
 #[derive(Debug, Deserialize, Serialize, ToSchema, Dummy)]
+pub struct AddProductResponse {
+  pub id: Uuid,
+}
+
+impl AddProductResponse {
+  pub fn new(id: Uuid) -> Self {
+    Self { id }
+  }
+}
+
+#[derive(Debug, Deserialize, Serialize, ToSchema, Dummy)]
 pub struct InvitationResponse {
   pub id: Uuid,
   pub expire_in: u64,

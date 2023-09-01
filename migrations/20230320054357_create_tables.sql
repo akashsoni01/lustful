@@ -15,6 +15,17 @@ CREATE TABLE users (
   PRIMARY KEY(id)
 );
 
+CREATE TABLE products (
+  id uuid NOT NULL,
+  title VARCHAR(255) NOT NULL,
+  product_id VARCHAR(255) NOT NULL UNIQUE,
+  is_active BOOLEAN NOT NULL,
+  create_at timestamptz DEFAULT current_timestamp,
+  update_at timestamptz DEFAULT current_timestamp,
+  PRIMARY KEY(id)
+);
+
+
 CREATE OR REPLACE FUNCTION set_update_at_column()
 RETURNS TRIGGER AS $$
 BEGIN
