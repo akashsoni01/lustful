@@ -1,4 +1,7 @@
 use fake::faker::internet::en::{Password, SafeEmail, Username};
+use fake::faker::job::en::Title;
+use fake::faker::boolean::en::Boolean;
+use fake::faker::name::en::Name;
 use fake::Dummy;
 use serde::{Deserialize, Serialize};
 use strum::Display;
@@ -31,6 +34,27 @@ impl RegisterRequest {
     serde_json::to_string(&self)
   }
 }
+
+
+#[derive(Debug, Deserialize, Serialize, Dummy, Validate, ToSchema)]
+pub struct AddProductRequest {
+    #[dummy(faker = "Title()")]
+    pub title: String,
+    #[dummy(faker = "Name()")]
+    pub product_id: String,
+    #[dummy(faker = "Boolean(70)")]
+    pub is_active: bool,
+  }
+  
+  impl AddProductRequest {
+  pub fn new(title: &str, product_id: &str) -> Self {
+      Self {
+        title: title.to_string(),
+        product_id: product_id.to_string(),
+        is_active: true,
+      }
+    }
+  }
 
 #[derive(Debug, Deserialize, Serialize, Dummy, Validate, ToSchema)]
 pub struct InvitationRequest {

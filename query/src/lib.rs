@@ -8,6 +8,8 @@ use configure::{db::DatabaseConfig, CONFIG};
 use error::AppError;
 
 pub mod user;
+pub mod product;
+
 
 #[tracing::instrument(skip(f))]
 pub async fn get_transaction<F, T, O>(pg_pool: &PgPool, f: F) -> Result<O, AppError>
