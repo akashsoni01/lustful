@@ -1,4 +1,4 @@
-name: security checker
+name: security audit
 on:
   push:
     paths:

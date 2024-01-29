@@ -1,4 +1,4 @@
-name: binary build checker
+name: build check
 on:
   push:
     branches: ["main","develop"]
@@ -9,7 +9,7 @@ env:
 
 jobs:
   check:
-    name: cargo check
+    name: Cargo check
     runs-on: ubuntu-latest
     env:
       SQLX_OFFLINE: true
